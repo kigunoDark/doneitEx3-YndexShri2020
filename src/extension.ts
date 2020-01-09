@@ -51,7 +51,7 @@ const getPreviewKey = (doc: vscode.TextDocument): string => doc.uri.path;
 
 const getMediaPath = (context: vscode.ExtensionContext) => vscode.Uri
     .file(context.extensionPath)
-    // .with({ scheme: "resource"})
+    .with({ scheme: "resource"})
     .toString() + '/';
 
 const initPreviewPanel = (document: vscode.TextDocument) => {
@@ -83,7 +83,10 @@ const updateContent = (doc: vscode.TextDocument, context: vscode.ExtensionContex
         try {
             const json = doc.getText();
             const data = JSON.parse(json);
-            const html = template.apply(data);                    
+            const html = template.apply(data);   
+            
+
+            // We need to add our style.css and script.js
             const stylePath = vscode.Uri.file(
                 join(context.extensionPath, "preview", 'style.css')
             );
