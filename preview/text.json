@@ -2,6 +2,7 @@
     "block": "page",
     "content": [
         {
+<<<<<<< HEAD
           "block": "text",
           "mods": {
               "type": "h3"
@@ -49,3 +50,24 @@
         }
     ]
   }
+=======
+            "block":"header", 
+            "content": "test"
+        },
+        {
+            "block": "body",
+            "content": [
+                {
+                    "block": "menu",
+                    "content": [
+                        { "content": "item 1" },
+                        { "content": "item 2" },
+                        { "content": "item 3" }
+                    ]
+                }
+
+            ]
+        }
+    ]
+}
+>>>>>>> a30c11c... осталось подтянуть линтер

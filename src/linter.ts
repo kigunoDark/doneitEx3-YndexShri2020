@@ -1,58 +1,6 @@
 import * as jsonToAst from "json-to-ast";
 import { DebugConsoleMode } from "vscode";
-import lint from "./lintRules";
 
-// console.log(lint(`{
-//     "block": "page",
-//     "content": [
-//         {
-//           "block": "text",
-//           "mods": {
-//               "type": "h3"
-//           },
-//           "content": "header"
-//         },
-//         {
-//             "block": "page",
-//             "elem": "section",
-//             "content": [
-//                 {
-//                     "block": "page",
-//                     "elem": "content",
-//                     "content": [
-//                         {
-//                             "block": "text",
-//                             "mods": {
-//                                 "type": "h2"
-//                             },
-//                             "content": "header"
-//                         },
-//                         {
-//                             "block": "container",
-//                             "content": {
-//                                 "block": "text",
-//                                 "mods": {
-//                                     "type": "h1"
-//                                 },
-//                                 "content": "header"
-//                             }
-//                         },
-//                         {
-//                           "block": "container",
-//                           "content": {
-//                               "block": "text",
-//                               "mods": {
-//                                   "type": "h1"
-//                               },
-//                               "content": "header"
-//                           }
-//                       }
-//                     ]
-//                 }
-//             ]
-//         }
-//     ]
-//   }`));
 export type JsonAST = jsonToAst.AstJsonEntity | undefined;
 
 export interface LinterProblem<TKey> {
@@ -92,7 +40,7 @@ export function makeLint<TProblemKey>(
     
     const errors: LinterProblem<TProblemKey>[] = [];
     const ast: JsonAST = parseJson(json);
-
+  
     if (ast) {
         walk(ast, 
             (property: jsonToAst.AstProperty) => errors.push(...validateProperty(property)), 
