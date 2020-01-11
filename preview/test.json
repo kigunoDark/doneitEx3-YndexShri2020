@@ -1,0 +1,19 @@
+{
+    "block": "page",
+    "content": [
+        {"block": "header", "content": "test"},
+        {
+            "BLOCK": "body",
+            "content": [
+                {
+                    "block": "menu",
+                    "content": [
+                        {"block": "body","content": "item 1"},
+                        {"content": "item 2"},
+                        {"content": "item 3"}
+                    ]
+                }
+            ]
+        }
+    ]
+}
