@@ -15,7 +15,7 @@ import { basename } from 'path';
 
 
 import { ExampleConfiguration, Severity, RuleKeys } from './configuration';
-import  { lint }  from './linter';
+import  { lint, RuleList }  from './linter';
 
 let conn = createConnection(ProposedFeatures.all);
 let docs = new TextDocuments();
@@ -33,42 +33,90 @@ conn.onInitialize((params: InitializeParams) => {
     };
 });
 
-// function GetSeverity(key: RuleKeys): DiagnosticSeverity | undefined {
-//     if (!conf || !conf.severity) {
-//         return undefined;
-//     }
 
-//     const severity: Severity = conf.severity[key];
+// Так-как у меня все переборы происходят в моем линтере я решил пойти таким путем
+const getRulesKeys = (key: any): RuleList<RuleKeys>[] => {
+    switch(key) {
+        case RuleKeys.WarningInvalidButtonPosition: 
+            return [{ key: RuleKeys.WarningInvalidButtonPosition}];
+        case RuleKeys.WarningInvalidButtonSize:
+            return [{ key: RuleKeys.WarningInvalidButtonSize}];
+        case RuleKeys.WarningInvalidPlaceholderSize:
+            return [{ key: RuleKeys.WarningInvalidPlaceholderSize}];
+        case RuleKeys.WarningTextSizeShouldBeEqual: 
+            return [{ key: RuleKeys.WarningTextSizeShouldBeEqual}];
+    }
+    
+    return [];
+};
 
-//     switch (severity) {
-//         case Severity.Error:
-//             return DiagnosticSeverity.Information;
-//         case Severity.Warning:
-//             return DiagnosticSeverity.Warning;
-//         case Severity.Information:
-//             return DiagnosticSeverity.Information;
-//         case Severity.Hint:
-//             return DiagnosticSeverity.Hint;
-//         default:
-//             return undefined;
-//     }
-// }
 
-// function GetMessage(key: RuleKeys): string {
-//     if (key === RuleKeys.BlockNameIsRequired) {
-//         return 'Field named \'block\' is required!';
-//     }
+function GetSeverity(key: RuleKeys): DiagnosticSeverity | undefined {
+    if (!conf || !conf.severity) {
+        return undefined;
+    }
+   
+    const severity: Severity = conf.severity[key];
+    console.log(severity);
+    
+    switch (severity) {
+        case Severity.Error:
+            return DiagnosticSeverity.Error;
+        case Severity.Warning:
+            return DiagnosticSeverity.Warning;
+        case Severity.Information:
+            return DiagnosticSeverity.Information;
+        case Severity.Hint:
+            return DiagnosticSeverity.Hint;
+        default:
+            return undefined;
+    }
+}
 
-//     if(key = RuleKeys.WARNING_TEXT_SIZES_SHOULD_BE_EQUAL) {
-//         return "Hey";
-//     }
+function GetMessage(key: RuleKeys): string {
 
-//     if (key === RuleKeys.UppercaseNamesIsForbidden) {
-//         return 'Uppercase properties are forbidden!';
-//     }
+    if(key === RuleKeys.WarningTextSizeShouldBeEqual) {
+        return "Все тексты (блоки text) в блоке warning должны быть одного размера";
+    }
 
-//     return `Unknown problem type '${key}'`;
-// }
+    if(key === RuleKeys.WarningInvalidButtonSize) {
+        return "Размер кнопки блока warning должен быть на 1 шаг больше текста" + 
+        "(например, для размера l таким значением будет xl)";
+    }
+
+    
+    if(key === RuleKeys.WarningInvalidPlaceholderSize) {
+        return "Допустимые размеры для блока placeholder в блоке warning " +
+        "(значение модификатора size): s, m, l";
+    }
+
+    if(key === RuleKeys.WarningInvalidButtonPosition) {
+        return "Блок button в блоке warning не может находиться перед блоком placeholder" +
+        "на том же или более глубоком уровне вложенности";
+    }
+
+    if(key === RuleKeys.GridTooMuchMarketingBlocks) {
+        return "Слишком много макркетинговых блоков в Grid";
+    }
+
+    if(key === RuleKeys.TextSeveralH1) {
+        return "Заголовок первого уровня (блок text с модификатором type h1)" +
+        "на странице должен быть единственным";
+    }
+
+    if(key === RuleKeys.TextInvalidH2Position) {
+        return "Заголовок второго уровня (блок text с модификатором type h2)" + 
+        "не может находиться перед заголовком первого уровня на том же или более глубоком уровне вложенности";
+    }
+
+    if(key === RuleKeys.TextInvalidH3Position ) {
+        return "Заголовок третьего уровня (блок text с модификатором type h3)" +
+        "не может находиться перед заголовком второго уровня на том же или более глубоком" +
+        "Sуровне вложенности";
+    }
+
+    return `Unknown problem type '${key}'`;
+}
 
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
     try {
@@ -78,49 +126,18 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
         // Get json string insted of uri. We need json string
         const json = textDocument.getText();
    
-        
-        // const rules =  lint(json);
-        // rules.forEach(function(value:any){
-        //     switch (value.key) {
-        //         case "WARNING.TEXT_SIZES_SHOULD_BE_EQUAL":
-        //        le
-        //     }
-            
-        // });
     
-        // const validateWarning = ()
-
-        // const validateObject = (
-        //     obj: jsonToAst.AstObject
-        // ): LinterProblem<RuleKeys>[] => 
-        //   {
-        //    return obj.children.some(p => p.key.value === 'block')
-        //     ? []
-        //     : [{ key: RuleKeys.BlockNameIsRequired, loc: obj.loc }];
-        //   }
-        
-           
-
-        // const validateProperty = (
-        //     property: jsonToAst.AstProperty
-        // ): LinterProblem<RuleKeys>[] => /^[A-Z]+$/.test(property.key.value)
-        //     ? [
-        //         {
-        //             key: RuleKeys.UppercaseNamesIsForbidden,
-        //             loc: property.loc
-        //         }
-        //     ]
-        //     : [];
-           
-
         const diagnostics: Diagnostic[] = lint(json).reduce(
             (
                 list: Diagnostic[],
                 problem
-            ): Diagnostic[] => {
-                // const severity = GetSeverity(problem.key);
-                // if (severity) {
-                //     const message = GetMessage(problem.key);
+            ): Diagnostic[] => {  
+                let rules =  getRulesKeys(problem.key);
+       
+                const severity = GetSeverity(rules[0].key);
+                if (severity) {
+                 
+                    const message = GetMessage(rules[0].key);
                     let diagnostic: Diagnostic = {
                         range: {
                             start: textDocument.positionAt(
@@ -129,13 +146,14 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
                             ),
                             end: textDocument.positionAt(problem.loc.end.offset)
                         },
-                        severity: DiagnosticSeverity.Error,
-                        message: problem.error,
+                        severity,
+                        message,
                         source
                     };
+
                     
                     list.push(diagnostic);
-                // }
+                }
                 
                 return list;
             },

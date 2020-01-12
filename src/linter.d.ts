@@ -50,7 +50,9 @@ declare namespace JsonToAst {
     export type AstJsonEntity = AstObject | AstArray | AstLiteral;
     
 }
-
+export interface RuleList<TKey> {
+    key: TKey;
+}
 export interface LinterProblem<TKey> {
     key: TKey;
     error: string;

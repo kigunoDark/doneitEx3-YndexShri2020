@@ -24,7 +24,7 @@
 					"default": true,
 					"description": "Enable/disable example linter."
 				},
-				"example.severity.WarningTextSizeShouldBeEqual": {
+				"example.severity.warningTextSizeShouldBeEqual": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -33,10 +33,10 @@
 						"Hint",
 						"None"
 					],
-					"default": "Warning",
-					"description": "The 'WarningTextSizeShouldBeEqual' rule severity."
+					"default": "Error",
+					"description": "The 'warningTextSizeShouldBeEqual' rule severity."
 				},
-				"example.severity.WarningInvalidPlaceholderSize": {
+				"example.severity.warningInvalidPlaceholderSize": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -46,9 +46,9 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'WarningInvalidPlaceholderSize' rule severity."
+					"description": "The 'warningInvalidPlaceholderSize' rule severity."
 				},
-				"example.severity.WarningInvalidButtonSize": {
+				"example.severity.warningInvalidButtonSize": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -58,9 +58,9 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'WarningInvalidButtonSize' rule severity."
+					"description": "The 'warningInvalidButtonSize' rule severity."
 				},
-				"example.severity.WarningInvalidButtonPosition": {
+				"example.severity.warningInvalidButtonPosition": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -70,9 +70,9 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'WarningInvalidButtonPosition' rule severity."
+					"description": "The 'warningInvalidButtonPosition' rule severity."
 				},
-				"example.severity.GridTooMuchMarketingBlocks": {
+				"example.severity.gidTooMuchMarketingBlocks": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -82,9 +82,9 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'GridTooMuchMarketingBlocks' rule severity."
+					"description": "The 'gridTooMuchMarketingBlocks' rule severity."
 				},
-				"example.severity.TextSeveralH1": {
+				"example.severity.textSeveralH1": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -94,9 +94,9 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'TextSeveralH1' rule severity."
+					"description": "The 'textSeveralH1' rule severity."
 				},
-				"example.severity.TextInvalidH3Position": {
+				"example.severity.textInvalidH3Position": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -106,9 +106,9 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'TextInvalidH3Position' rule severity."
+					"description": "The 'textInvalidH3Position' rule severity."
 				},
-				"example.severity.TextInvalidH2Position": {
+				"example.severity.textInvalidH2Position": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -118,7 +118,7 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'TextInvalidH2Position' rule severity."
+					"description": "The 'textInvalidH2Position' rule severity."
 				},
 				"example.severity.uppercaseNamesIsForbidden": {
 					"type": "string",

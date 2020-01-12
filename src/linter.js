@@ -284,20 +284,20 @@ const addError = (data, obj, link) => {
 function ErrorsTitle() {
    
     this.titleH1 = {
-      code: "TEXT.SEVERAL_H1",
+      code: "textSeveralH1",
       error: "Заголовок первого уровня (блок text с модификатором type h1)" +
              "на странице должен быть единственным"
     };
 
     this.titleH2 = {
-      code: "TEXT.INVALID_H2_POSITION",
+      code: "textInvalidH2Position",
       error: "Заголовок второго уровня (блок text с модификатором type h2)" + 
              "не может находиться перед заголовком первого уровня на том же или более глубоком уровне вложенности",
       location: []
     };
 
     this.titleH3 = {
-      code: "TEXT.INVALID_H3_POSITION",
+      code: "textInvalidH3Position",
       error: "Заголовок третьего уровня (блок text с модификатором type h3)" +
              "не может находиться перед заголовком второго уровня на том же или более глубоком" +
              "Sуровне вложенности",
@@ -345,7 +345,7 @@ function ErrorsTitle() {
   
 function ErrorsGrid(obj) {
 
-    this.code = "GRID.TOO_MUCH_MARKETING_BLOCKS";
+    this.code = "gidTooMuchMarketingBlocks";
     this.error = "Слишком много макркетинговых блоков в Grid";
     this.counter = 0;
     this.max = obj.max;
@@ -369,14 +369,14 @@ function ErrorsGrid(obj) {
 function WarningErrors(link) {
     
     this.txtSize = {
-        code: "WARNING.TEXT_SIZES_SHOULD_BE_EQUAL",
+        code: "warningTextSizeShouldBeEqual",
         mods: { size: "none" },
         error: "Все тексты (блоки text) в блоке warning должны быть одного размера",
         appropriate: true
     };
   
     this.btnSize = {
-        code: "WARNING.INVALID_BUTTON_SIZE",
+        code: "warningInvalidButtonSize",
         error: "Размер кнопки блока warning должен быть на 1 шаг больше текста" + 
                "(например, для размера l таким значением будет xl)",
         mods: { size: "none" },
@@ -384,14 +384,14 @@ function WarningErrors(link) {
     };
 
     this.plhSize = {
-        code: "WARNING.INVALID_PLACEHOLDER_SIZE",
+        code: "warningInvalidPlaceholderSize",
         error: "Допустимые размеры для блока placeholder в блоке warning " +
                "(значение модификатора size): s, m, l",
         mods: { size: ["s", "m", "l"] }
     };
 
     this.plhPosition = {
-        code: "WARNING.INVALID_BUTTON_POSITION",
+        code: "warningInvalidButtonPosition",
         error: "Блок button в блоке warning не может находиться перед блоком placeholder" +
                "на том же или более глубоком уровне вложенности"
     };
