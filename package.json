@@ -45,7 +45,7 @@
 						"Hint",
 						"None"
 					],
-					"default": "Information",
+					"default": "Warning",
 					"description": "The 'blockNameIsRequired' rule severity."
 				}
 			}
