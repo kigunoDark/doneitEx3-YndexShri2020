@@ -6,7 +6,7 @@
             "BLOCK": "body",
             "content": [
                 {
-                    "block": "menu",
+                    "BLOCK": "menu",
                     "content": [
                         {"block": "body","content": "item 1"},
                         {"content": "item 2"},

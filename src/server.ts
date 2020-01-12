@@ -121,7 +121,6 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
                     
                     list.push(diagnostic);
                 }
-                
                 return list;
             },
             []
