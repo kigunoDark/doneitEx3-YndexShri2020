@@ -118,6 +118,7 @@ function GetMessage(key: RuleKeys): string {
     return `Unknown problem type '${key}'`;
 }
 
+
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
     try {
         const source = basename(textDocument.uri);

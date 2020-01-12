@@ -14,7 +14,7 @@
                 },
                 {
                     "block": "text",
-                    "mods": { "size": "l" }
+                    "mods": { "size": "m" }
                 },
                 { "block": "button", "mods": { "size": "s" } }
             ]
