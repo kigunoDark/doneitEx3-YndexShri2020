@@ -20,8 +20,6 @@ let conn = createConnection(ProposedFeatures.all);
 let docs = new TextDocuments();
 let conf: ExampleConfiguration | undefined = undefined;
 
-console.log('Starct Server');
-
 conn.onInitialize((params: InitializeParams) => {
     let capabilities = params.capabilities;
     return {
@@ -128,10 +126,8 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
             },
             []
         );
-
-        if (diagnostics.length) {
             conn.sendDiagnostics({ uri: textDocument.uri, diagnostics });
-        }
+      
     } catch(err) {
         console.log(err);
     }
