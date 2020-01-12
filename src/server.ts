@@ -87,7 +87,7 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
             ? [
                 {
                     key: RuleKeys.UppercaseNamesIsForbidden,
-                    loc: property.loc
+                    loc: property.key.loc
                 }
             ]
             : [];
