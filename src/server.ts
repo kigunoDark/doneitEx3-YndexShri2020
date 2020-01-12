@@ -118,7 +118,6 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
                 list: Diagnostic[],
                 problem
             ): Diagnostic[] => {
-                console.log(problem)
                 // const severity = GetSeverity(problem.key);
                 // if (severity) {
                 //     const message = GetMessage(problem.key);
