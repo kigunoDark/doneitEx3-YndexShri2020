@@ -24,6 +24,18 @@
 					"default": true,
 					"description": "Enable/disable example linter."
 				},
+				"example.severity.WARNING_TEXT_SIZES_SHOULD_BE_EQUAL": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'WARNING_TEXT_SIZES_SHOULD_BE_EQUAL' rule severity."
+				},
 				"example.severity.uppercaseNamesIsForbidden": {
 					"type": "string",
 					"enum": [

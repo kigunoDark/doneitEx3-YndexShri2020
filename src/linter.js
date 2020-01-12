@@ -265,7 +265,7 @@ function escapeJsonPointer(str) {
 const addError = (data, obj, link) => {
     data.errors.push({
         key: obj.code,
-        // error: obj.error,
+        error: obj.error,
         loc: {
             start: {
                 column: data.pnt[link].value.column,
@@ -509,7 +509,6 @@ let traverse = ( obj, link , errsList = {}) => {
   
   
 let lint = (str)=> {
-    console.log(parse(str))
     const obj = parse(str);
     this.errors = [];
     this.pnt = obj.pointers;
@@ -520,5 +519,5 @@ let lint = (str)=> {
 };
 
 
-export default lint;
+module.exports = { lint };
 

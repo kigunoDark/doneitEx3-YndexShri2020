@@ -1,10 +1,13 @@
+// // Один из способов подгрузить мой линтер написанный на js
+// declare module '*.js';
+
+// Потом я понял, что нужно так
 declare namespace JsonToAst {
     export interface AstPosition {
         line: number;
         column: number;
         offset: number;
     }
-
 
 
     export interface AstLocation {
@@ -45,10 +48,13 @@ declare namespace JsonToAst {
     }
 
     export type AstJsonEntity = AstObject | AstArray | AstLiteral;
+    
 }
 
-declare function JsonToAst(json: string): JsonToAst.AstJsonEntity;
-
-declare module "json-to-ast" {
-    export = JsonToAst;
+export interface LinterProblem<TKey> {
+    key: TKey;
+    error: string;
+    loc: JsonToAst.AstLocation;
 }
+
+export declare function lint <TProblemKey> (str: string): LinterProblem<TProblemKey>[];
