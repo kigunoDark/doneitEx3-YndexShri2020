@@ -33,12 +33,25 @@ conn.onInitialize((params: InitializeParams) => {
     };
 });
 
-// function GetSeverity(key: RuleKeys): DiagnosticSeverity | undefined {
+// function GetSeverity(key: string): DiagnosticSeverity | undefined {
 //     if (!conf || !conf.severity) {
 //         return undefined;
 //     }
-
-//     const severity: Severity = conf.severity[key];
+    
+//     // switch(key) {
+//     //     case RuleKeys.WarningInvalidButtonPosition:
+//     //     case RuleKeys.WarningInvalidButtonSize:
+//     //     case RuleKeys.WarningInvalidPlaceholderSize:
+//     //     case RuleKeys.WarningTextSizeShouldBeEqual:
+//     //         return DiagnosticSeverity.Warning;
+//     //     case RuleKeys.TextInvalidH2Position:
+//     //     case RuleKeys.TextSeveralH1:
+//     //     case RuleKeys.TextInvalidH3Position:
+//     //         return DiagnosticSeverity.Information;
+//     //     case RuleKeys.GridTooMuchMarketingBlocks:
+//     //         return DiagnosticSeverity.Information
+//     // }
+//     const severity: Severity = conf.severity[RuleKeys];
 
 //     switch (severity) {
 //         case Severity.Error:
@@ -59,9 +72,11 @@ conn.onInitialize((params: InitializeParams) => {
 //         return 'Field named \'block\' is required!';
 //     }
 
-//     if(key = RuleKeys.WARNING_TEXT_SIZES_SHOULD_BE_EQUAL) {
-//         return "Hey";
+//     if(key = RuleKeys.WarningTextSizeShouldBeEqual) {
+//         return "WARNING.TEXT_SIZES_SHOULD_BE_EQUA";
 //     }
+
+
 
 //     if (key === RuleKeys.UppercaseNamesIsForbidden) {
 //         return 'Uppercase properties are forbidden!';
