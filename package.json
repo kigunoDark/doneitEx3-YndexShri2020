@@ -24,7 +24,7 @@
 					"default": true,
 					"description": "Enable/disable example linter."
 				},
-				"example.severity.WARNING_TEXT_SIZES_SHOULD_BE_EQUAL": {
+				"example.severity.WarningTextSizeShouldBeEqual": {
 					"type": "string",
 					"enum": [
 						"Error",
@@ -34,7 +34,91 @@
 						"None"
 					],
 					"default": "Warning",
-					"description": "The 'WARNING_TEXT_SIZES_SHOULD_BE_EQUAL' rule severity."
+					"description": "The 'WarningTextSizeShouldBeEqual' rule severity."
+				},
+				"example.severity.WarningInvalidPlaceholderSize": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'WarningInvalidPlaceholderSize' rule severity."
+				},
+				"example.severity.WarningInvalidButtonSize": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'WarningInvalidButtonSize' rule severity."
+				},
+				"example.severity.WarningInvalidButtonPosition": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'WarningInvalidButtonPosition' rule severity."
+				},
+				"example.severity.GridTooMuchMarketingBlocks": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'GridTooMuchMarketingBlocks' rule severity."
+				},
+				"example.severity.TextSeveralH1": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'TextSeveralH1' rule severity."
+				},
+				"example.severity.TextInvalidH3Position": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'TextInvalidH3Position' rule severity."
+				},
+				"example.severity.TextInvalidH2Position": {
+					"type": "string",
+					"enum": [
+						"Error",
+						"Warning",
+						"Information",
+						"Hint",
+						"None"
+					],
+					"default": "Warning",
+					"description": "The 'TextInvalidH2Position' rule severity."
 				},
 				"example.severity.uppercaseNamesIsForbidden": {
 					"type": "string",
