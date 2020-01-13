@@ -35,27 +35,27 @@ conn.onInitialize((params: InitializeParams) => {
 
 
 // Так-как у меня все переборы происходят в моем линтере я решил пойти таким путем
-const getRulesKeys = (key: any): RuleList<RuleKeys>[] => {
+const getRulesKeys = (key: any): RuleList<RuleKeys> => {
     switch(key) {
         case RuleKeys.WarningInvalidButtonPosition: 
-            return [{ key: RuleKeys.WarningInvalidButtonPosition}];
+            return { key: RuleKeys.WarningInvalidButtonPosition};
         case RuleKeys.WarningInvalidButtonSize:
-            return [{ key: RuleKeys.WarningInvalidButtonSize}];
+            return { key: RuleKeys.WarningInvalidButtonSize};
         case RuleKeys.WarningInvalidPlaceholderSize:
-            return [{ key: RuleKeys.WarningInvalidPlaceholderSize}];
+            return { key: RuleKeys.WarningInvalidPlaceholderSize};
         case RuleKeys.WarningTextSizeShouldBeEqual: 
-            return [{ key: RuleKeys.WarningTextSizeShouldBeEqual}];
+            return { key: RuleKeys.WarningTextSizeShouldBeEqual};
         case RuleKeys.GridTooMuchMarketingBlocks:
-            return [{key: RuleKeys.GridTooMuchMarketingBlocks}];
+            return {key: RuleKeys.GridTooMuchMarketingBlocks};
         case RuleKeys.TextSeveralH1:
-            return [{key: RuleKeys.TextSeveralH1}];
+            return {key: RuleKeys.TextSeveralH1};
         case RuleKeys.TextInvalidH2Position:
-            return [{key: RuleKeys.TextInvalidH2Position}];
+            return {key: RuleKeys.TextInvalidH2Position};
         case RuleKeys.TextInvalidH3Position:
-            return [{key: RuleKeys.TextInvalidH3Position}];
+            return {key: RuleKeys.TextInvalidH3Position};
     }
     
-    return [];
+    return key;
 };
 
 
@@ -143,10 +143,10 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
             ): Diagnostic[] => {  
                 let rules =  getRulesKeys(problem.key);
        
-                const severity = GetSeverity(rules[0].key);
+                const severity = GetSeverity(rules.key);
                 if (severity) {
                  
-                    const message = GetMessage(rules[0].key);
+                    const message = GetMessage(rules.key);
                     let diagnostic: Diagnostic = {
                         range: {
                             start: textDocument.positionAt(
