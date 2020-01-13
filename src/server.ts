@@ -45,6 +45,14 @@ const getRulesKeys = (key: any): RuleList<RuleKeys>[] => {
             return [{ key: RuleKeys.WarningInvalidPlaceholderSize}];
         case RuleKeys.WarningTextSizeShouldBeEqual: 
             return [{ key: RuleKeys.WarningTextSizeShouldBeEqual}];
+        case RuleKeys.GridTooMuchMarketingBlocks:
+            return [{key: RuleKeys.GridTooMuchMarketingBlocks}];
+        case RuleKeys.TextSeveralH1:
+            return [{key: RuleKeys.TextSeveralH1}];
+        case RuleKeys.TextInvalidH2Position:
+            return [{key: RuleKeys.TextInvalidH2Position}];
+        case RuleKeys.TextInvalidH3Position:
+            return [{key: RuleKeys.TextInvalidH3Position}];
     }
     
     return [];
