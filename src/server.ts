@@ -130,7 +130,7 @@ function GetMessage(key: RuleKeys): string {
 async function validateTextDocument(textDocument: TextDocument): Promise<void> {
     try {
         const source = basename(textDocument.uri);
-    
+        console.log(source);
        
         // Get json string insted of uri. We need json string
         const json = textDocument.getText();
@@ -160,7 +160,6 @@ async function validateTextDocument(textDocument: TextDocument): Promise<void> {
                         source
                     };
 
-                    
                     list.push(diagnostic);
                 }
                 

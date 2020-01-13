@@ -10,7 +10,7 @@
             "content": [
                 {
                     "block": "text",
-                    "mods": { "size": "s" }
+                    "mods": { "size": "m" }
                 },
                 {
                     "block": "text",

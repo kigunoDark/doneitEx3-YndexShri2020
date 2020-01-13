@@ -52,4 +52,40 @@ https://code.visualstudio.com/api/extension-guides/webview#loading-local-content
 
 Я описываю все эти проблемы, уже после проделанной работы. Возможно я что-то упустил, но вроде по основным ошибкам, которые были найдены я прошелся. Я не использовал никаких сторонних библиотек. Я просто гуглил, и думал, а еще делал console.log. Если меня научат в яндекс школе делать это быстрее, мне еще сильнее хочется к вам попасть!!
 
+
+![скриншот интерфейса](./screenshots/settings.png)
+
+Последним шагом необходимо было сделать возможность смены настроек вывода ошибок. Моей задачей было сделать все так, чтобы мой линтер работал как надо и ничего не сломать. Так-как у меня уже был свой перебор в линтере и свой поиск ошибок, пришлось избавиться от ненужных функций валидации в старом коде. Я решил в описании линтера добавить еще один интерфейс в который будет приниматься только одно значение 'key'. В нашем случае, это тип ошибки, возвращаемый из нашего линтера. У нас уже есть файл 'configuration.ts', где заданы все настройки. Очень удобная и красивая архитектура кода, которую не хотелось менять и портить. Поэтому я добавил туда свои правила, и прописал их в package.json. Новый, созданный мной интерфейс принимает в себя правила типа 'RuleKeys', поэтому мы можем свободно его заполнять и уже затем отправлять в функции: GetSeverity() , GetMessage(). Следовательно, я создал просто отдельную функцию getRulesKeys(), которая принимает типы моих ошибок из линтера, сравнивает их с перечислением 'RuleKeys', из наших конфигураций, заполняет наш новый интерфейс, которые в дальнейшем позволяет нам работать, как это было изначально задумано создателями.
+В итоге:
+1.	Я заполнил свои правила в configuration.ts, и настроил SeverityConfiguration.
+2.	Произвел необходимые заполнения в package.json.
+3.	Создал свой интерфейс, куда мы записываем наши ‘RuleKeys’, в случае если ошибка есть и ее нужно будет отобразить.
+4.	Создал функцию, которая сравнивает, есть ли у нас ошибки и есть ли у нас такое перечисление правил в конфигурациях, и если есть, то возвращает нам ‘RuleKeys’, с которыми мы можем дальше работать.
+
+Функция getRulesKeys.
+```ts 
+const getRulesKeys = (key: any): RuleList<RuleKeys>[] => {
+    switch(key) {
+        case RuleKeys.WarningInvalidButtonPosition: 
+            return [{ key: RuleKeys.WarningInvalidButtonPosition}];
+        case RuleKeys.WarningInvalidButtonSize:
+            return [{ key: RuleKeys.WarningInvalidButtonSize}];
+        case RuleKeys.WarningInvalidPlaceholderSize:
+            return [{ key: RuleKeys.WarningInvalidPlaceholderSize}];
+        case RuleKeys.WarningTextSizeShouldBeEqual: 
+            return [{ key: RuleKeys.WarningTextSizeShouldBeEqual}];
+        case RuleKeys.GridTooMuchMarketingBlocks:
+            return [{key: RuleKeys.GridTooMuchMarketingBlocks}];
+        case RuleKeys.TextSeveralH1:
+            return [{key: RuleKeys.TextSeveralH1}];
+        case RuleKeys.TextInvalidH2Position:
+            return [{key: RuleKeys.TextInvalidH2Position}];
+        case RuleKeys.TextInvalidH3Position:
+            return [{key: RuleKeys.TextInvalidH3Position}];
+    }
+    
+    return [];
+};
+```
+
 **P.S. Прошу прощение за ужасные скриншоты. По-другому делать не умею)**
